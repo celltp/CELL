@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenidos al Colegio de Economistas de La Libertad, comprometidos con la excelencia y el desarrollo sostenible en la formación de profesionales en economía.">
     <title>Colegio de Economistas de La Libertad</title>
     <link rel="icon" href="logo.jpg" type="image/x-icon">
     <style>
+        *{
+            padding: 0;
+            margin: 0%;
+        }
         body {
             font-family: Arial, sans-serif;
             color: #333;
@@ -16,7 +21,7 @@
         header {
             position: relative;
             width: 100%;
-            height: 400px; /* Ajusta la altura del header */
+            height: 400px;
             overflow: hidden;
         }
         .carousel-container {
@@ -24,6 +29,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            padding: 0%;
         }
         .carousel-inner {
             display: flex;
@@ -33,11 +39,12 @@
         .carousel-item {
             min-width: 100%;
             height: 100%;
+            position: relative;
         }
         .carousel-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+            object-fit: cover;
         }
         .carousel-control {
             position: absolute;
@@ -52,6 +59,10 @@
             text-align: center;
             line-height: 50px;
             transform: translateY(-50%);
+            transition: background-color 0.3s ease;
+        }
+        .carousel-control:hover {
+            background-color: rgba(236, 235, 235, 0.7);
         }
         .carousel-control.prev {
             left: 10px;
@@ -60,11 +71,11 @@
             right: 10px;
         }
         nav {
-            background: rgba(198, 40, 40, 0.8); /* Rojo más intenso con opacidad */
+            background: rgba(198, 40, 40, 0.8);
             text-align: center;
-            z-index: 2; /* Asegura que el nav esté encima del contenido del carrusel */
-            position: absolute; /* Posicionamiento absoluto para colocarlo encima del carrusel */
-            width: 100%; /* El nav debe cubrir todo el ancho del header */
+            z-index: 2;
+            position: absolute;
+            width: 100%;
             top: 0;
         }
         nav ul {
@@ -84,50 +95,62 @@
             display: inline-block;
         }
         nav ul li a:hover {
-            background-color: #b71c1c; /* Rojo más oscuro para el hover */
+            background-color: #b71c1c;
         }
         .container {
             width: 80%;
             margin: auto;
             overflow: hidden;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente para el contenedor */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
-            border-radius: 8px; /* Bordes redondeados para el contenedor */
+            border-radius: 8px;
             position: relative;
-            z-index: 1; /* Asegura que el contenedor esté debajo del header y nav */
+            z-index: 1;
         }
         .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: #fff;
             padding: 40px 20px;
             text-align: center;
             margin: 20px 0;
             border: 1px solid #ddd;
         }
-        .hero h2 {
+        .hero-content {
+            max-width: 60%;
+            padding-right: 20px;
+        }
+        .hero-content h2 {
             margin-top: 0;
         }
-        .hero img {
-            max-width: 80%; /* Ajusta el tamaño de la imagen */
+        .hero-content p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+        .hero-image img {
+            width: 100%;
             height: auto;
-            border: 1px solid #ddd; /* Añade un borde sutil a la imagen */
-            border-radius: 8px; /* Añade bordes redondeados */
-            margin-top: 20px; /* Espacio superior para la imagen */
+            border: 1px solid #ddd;
+            border-radius: 8px;
         }
         .section {
             padding: 20px;
             margin: 10px 0;
-            background-color: #f8bbd0; /* Rosa claro para las secciones */
+            background-color: #f8bbd0;
             border: 1px solid #ddd;
+            text-align: center;
         }
         footer {
-            background-color: #d32f2f; /* Rojo oscuro */
+            background-color: #d32f2f;
             color: #fff;
             text-align: center;
             padding: 10px 0;
             position: fixed;
             width: 100%;
             bottom: 0;
-            z-index: 1; /* Asegura que el footer esté encima del contenido */
+            z-index: 1;
         }
         .form-container {
             max-width: 600px;
@@ -142,15 +165,151 @@
         }
         .form-container button {
             padding: 10px;
-            background-color: #d32f2f; /* Rojo oscuro */
+            background-color: #d32f2f;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .form-container button:hover {
-            background-color: #b71c1c; /* Rojo más oscuro para el hover */
+            background-color: #b71c1c;
         }
+        .contenedor-carrusel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            padding-top: 1%;
+            border: 2px;
+            border-color: #050101;
+            border-style: ridge;
+        }
+        .interior-carrusel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .elemento-carrusel {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .contenido-carrusel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+            gap: 20px; /* Espacio entre texto e imagen */
+        }
+        .texto-carrusel {
+            max-width: 50%;
+            text-align: center; /* Centra el texto en el contenedor */
+        }
+        .texto-carrusel h2 {
+            margin-top: 0;
+        }
+        .texto-carrusel p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+        .imagen-carrusel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        .imagen-carrusel img {
+            max-width: 50%; /* Se ajusta el ancho máximo de la imagen a un tamaño más pequeño */
+            max-height: 50%; /* Se ajusta la altura máxima de la imagen */
+            object-fit: contain; /* Mantiene la proporción de la imagen */
+            border: 1px solid #971414;
+            border-radius: 8px;
+        }
+        .control-carrusel {
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(236, 235, 235, 0.5);
+            color: #d31212;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            transform: translateY(-50%);
+            transition: background-color 0.3s ease;
+        }
+        .control-carrusel:hover {
+            background-color: rgba(236, 235, 235, 0.7);
+        }
+        .control-anterior {
+            left: 10px;
+        }
+        .control-siguiente {
+            right: 10px;
+        }  
+        
+    /* Estilos anteriores... */
+    
+    /* Cambiar el estilo de las letras del carrusel en español */
+    .texto-carrusel h2 {
+        font-family: 'Georgia', serif; /* Tipografía elegante */
+        font-size: 2.2em; /* Aumentar ligeramente el tamaño del título */
+        color: #b71c1c; /* Color elegante para el título */
+        margin-bottom: 10px;
+    }
+
+    .texto-carrusel p {
+        font-family: 'Lora', serif; /* Fuente serif elegante para el cuerpo */
+        font-size: 1.1em; /* Tamaño ligeramente más pequeño */
+        color: #333; /* Color sobrio y profesional */
+        line-height: 1.8; /* Espaciado más amplio entre líneas */
+        margin-top: 5px;
+    }
+
+    /* Reducir el tamaño del contenedor */
+    .contenido-carrusel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%; /* Ajusta el tamaño del contenedor */
+        max-width: 1200px; /* Limita el tamaño máximo del contenedor */
+        margin: auto; /* Centra el contenedor */
+        padding: 20px; /* Menor padding para un contenedor más compacto */
+        box-sizing: border-box;
+        gap: 20px; /* Espacio entre texto e imagen */
+    }
+
+    .imagen-carrusel img {
+        max-width: 40%; /* Ajusta el ancho máximo de la imagen a un tamaño más pequeño */
+        max-height: 40%; /* Ajusta la altura máxima de la imagen */
+        object-fit: contain; /* Mantiene la proporción de la imagen */
+        border: 1px solid #971414;
+        border-radius: 8px;
+    }
+
+    /* Otros estilos del carrusel */
+    .contenedor-carrusel {
+        border-color: #971414; /* Color elegante para el borde */
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px; /* Bordes redondeados para darle elegancia */
+        padding-top: 20px; /* Espaciado interno reducido */
+        padding-bottom: 20px;
+    }
+</style>
+ 
+
     </style>
 </head>
 <body>
@@ -162,17 +321,16 @@
                 <img src="fachada.jpg" alt="Imagen de la fachada">
             </div>
             <div class="carousel-item">
-                <img src="banner2.jpg" alt="Imagen 2">
+                <img src="decano.jpg" alt="Imagen del decano">
             </div>
             <div class="carousel-item">
-                <img src="banner3.jpg" alt="Imagen 3">
+                <img src="todos.jpg" alt="Imagen de todos">
             </div>
         </div>
         <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
         <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
     </div>
 
-    <!-- Nav encima del carrusel -->
     <nav>
         <ul>
             <li><a href="#inicio">Inicio</a></li>
@@ -183,77 +341,157 @@
         </ul>
     </nav>
 </header>
-
-<div class="container">
-    <!-- Sección de Introducción -->
-    <div id="inicio" class="hero">
-        <h2>Bienvenidos al Colegio de Economistas de La Libertad</h2>
-        <p>Breve descripción del Colegio, misión y visión.</p>
-        <img src="banner.jpg" alt="Imagen destacada">
+<div class="contenedor-carrusel">
+    <div class="interior-carrusel">
+        <div class="elemento-carrusel">
+            <div class="contenido-carrusel">
+                <div class="texto-carrusel">
+                    <h2>Bienvenidos</h2>
+                    <p>En el Colegio de Economistas de La Libertad, nos dedicamos a formar y capacitar a los mejores profesionales en economía, comprometidos con la excelencia y el desarrollo sostenible. Nuestra misión es proporcionar educación de calidad, promover el pensamiento crítico y fomentar la ética profesional en el campo de la economía.</p>
+                </div>
+                <div class="imagen-carrusel">
+                    <img src="logo.jpg" alt="Imagen destacada">
+                </div>
+            </div>
+        </div>
+        <div class="elemento-carrusel">
+            <div class="contenido-carrusel">
+                <div class="texto-carrusel">
+                    <h2>Visión</h2>
+                    <p>Somos, al 2023, una institución líder de reconocido prestigio en la región y en la sociedad civil organizada, participando activamente en el desarrollo sostenido de la región a través de opiniones especializadas de sus agremiados; contando con una infraestructura moderna, implementada tecnológicamente acorde a los requerimientos de un mundo competitivo y globalizado; consolidando nuestra integración y fortaleciendo nuestro colegio con una permanente capacitación a sus agremiados y velando por el estricto cumplimiento de los principios deontológicos y la defensa profesional.</p>
+                </div>
+                <div class="imagen-carrusel">
+                    <img src="logo.jpg" alt="Imagen destacada">
+                </div>
+            </div>
+        </div>
+        <div class="elemento-carrusel">
+            <div class="contenido-carrusel">
+                <div class="texto-carrusel">
+                    <h2>Misión</h2>
+                    <p>El COLEGIO DE ECONOMISTAS DE LA LIBERTAD es una institución sin fines de lucro al servicio de la sociedad en general y de sus asociados en particular, coadyuvando al desarrollo económico sostenido de la región y del país, siendo referente de opinión de la política económica del país y defensor incondicional de los intereses de los profesionales economistas de La Libertad.</p>
+                </div>
+                <div class="imagen-carrusel">
+                    <img src="logo.jpg" alt="Imagen destacada">
+                </div>
+            </div>
+        </div>
     </div>
+    <button class="control-carrusel control-anterior" onclick="anteriorDiapositiva()">&#10094;</button>
+    <button class="control-carrusel control-siguiente" onclick="siguienteDiapositiva()">&#10095;</button>
+</div>
 
-    <!-- Sección de Noticias -->
+
     <div class="section">
         <h2>Últimas Noticias</h2>
         <ul>
-            <li><a href="#">Título de Noticia 1</a> - Breve descripción de la noticia 1.</li>
-            <li><a href="#">Título de Noticia 2</a> - Breve descripción de la noticia 2.</li>
-            <li><a href="#">Título de Noticia 3</a> - Breve descripción de la noticia 3.</li>
+            <li><a href="#">Título de Noticia 1</a> - Breve descripción de la noticia.</li>
+            <li><a href="#">Título de Noticia 2</a> - Breve descripción de la noticia.</li>
+            <li><a href="#">Título de Noticia 3</a> - Breve descripción de la noticia.</li>
         </ul>
     </div>
 
-    <!-- Sección de Eventos -->
-    <div id="eventos" class="section">
-        <h2>Eventos Próximos</h2>
-        <ul>
-            <li>Evento 1 - Fecha, descripción, <a href="#">más información</a>.</li>
-            <li>Evento 2 - Fecha, descripción, <a href="#">más información</a>.</li>
-            <li>Evento 3 - Fecha, descripción, <a href="#">más información</a>.</li>
-        </ul>
+    <div id="contacto" class="section">
+        <h2>Contáctanos</h2>
+        <form class="form-container">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
-
-    <!-- Sección de Biblioteca -->
-    <div id="biblioteca" class="section">
-        <h2>Nuestra Biblioteca</h2>
-        <p>Descripción de los recursos disponibles en la biblioteca y cómo acceder a ellos.</p>
-        <a href="#">Enlace al catálogo en línea</a>
-    </div>
-
-    <!-- Sección de Radio -->
-    <div id="radio" class="section">
-        <h2>Escucha Nuestra Radio</h2>
-        <p>Descripción de los programas de radio y cómo escucharlos.</p>
-        <a href="#">Enlace a la sección de Radio</a>
-    </div>
-
 </div>
-
-<script>
-    // Funciones de carrusel
-    let currentIndex = 0;
-
-    function showSlide(index) {
-        const slides = document.querySelectorAll('.carousel-item');
-        if (index >= slides.length) currentIndex = 0;
-        else if (index < 0) currentIndex = slides.length - 1;
-        else currentIndex = index;
-
-        const newTransform = -currentIndex * 100;
-        document.querySelector('.carousel-inner').style.transform = `translateX(${newTransform}%)`;
-    }
-
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
-
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
-</script>
 
 <footer>
     <p>&copy; 2024 Colegio de Economistas de La Libertad. Todos los derechos reservados.</p>
 </footer>
+
+<script>
+    // Carrusel en inglés
+let currentIndex = 0; // Variable para el carrusel en inglés
+let carouselInterval;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-item');
+    if (index >= slides.length) {
+        currentIndex = 0;
+    } else if (index < 0) {
+        currentIndex = slides.length - 1;
+    } else {
+        currentIndex = index;
+    }
+    const offset = -currentIndex * 100;
+    document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+}
+
+function nextSlide() {
+    showSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+    showSlide(currentIndex - 1);
+}
+
+function startCarousel() {
+    carouselInterval = setInterval(nextSlide, 5000); // Cambia automáticamente cada 8 segundos
+}
+
+function stopCarousel() {
+    clearInterval(carouselInterval);
+}
+
+const carouselContainer = document.querySelector('.carousel-container');
+carouselContainer.addEventListener('mouseover', stopCarousel);
+carouselContainer.addEventListener('mouseout', startCarousel);
+
+startCarousel();
+
+// Carrusel en español
+// Carrusel en español
+let indiceActual = 0; // Variable para el carrusel en español
+let carruselEspañolInterval;
+
+// Función para mostrar la diapositiva específica
+function mostrarDiapositiva(indice) {
+    const diapositivas = document.querySelectorAll('.elemento-carrusel');
+    if (indice >= diapositivas.length) {
+        indiceActual = 0;
+    } else if (indice < 0) {
+        indiceActual = diapositivas.length - 1;
+    } else {
+        indiceActual = indice;
+    }
+    const desplazamiento = -indiceActual * 100;
+    document.querySelector('.interior-carrusel').style.transform = `translateX(${desplazamiento}%)`;
+}
+
+// Función para avanzar a la siguiente diapositiva
+function siguienteDiapositiva() {
+    mostrarDiapositiva(indiceActual + 1);
+}
+
+// Función para detener el carrusel
+function stopCarouselEspañol() {
+    clearInterval(carruselEspañolInterval);
+}
+
+// Función para iniciar el carrusel
+function startCarouselEspañol() {
+    carruselEspañolInterval = setInterval(siguienteDiapositiva, 10000); // Cambia automáticamente cada 2 segundos
+}
+
+// Añadir eventos para pausar y reanudar el carrusel
+const carruselEspañolContainer = document.querySelector('#carrusel-espanol');
+if (carruselEspañolContainer) {
+    carruselEspañolContainer.addEventListener('mouseover', stopCarouselEspañol);
+    carruselEspañolContainer.addEventListener('mouseout', startCarouselEspañol);
+}
+
+// Iniciar el carrusel
+startCarouselEspañol();
+
+
+</script>
 
 </body>
 </html>
